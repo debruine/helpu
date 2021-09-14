@@ -100,6 +100,9 @@
 
     
     
+<style>
+  .cb_list ul { list-style-type: none; }
+</style>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#library(helpu)</span></code></pre></div>
 <p>This document is just Lisa trying to get her thoughts and vocabulary straight on this topic. It might turn into a proper vignette or might end up in the mess folder :)</p>
@@ -123,6 +126,19 @@
 </ul>
 <p>The subject specialist is likely to lead the development of the research question and interpretation of analyses. The data analyst is likely to lead the data cleaning/wrangling and analysis. Either the specialist or the analyst may lead the data acquisition and description. However, they will need each other’s expertise at all stages.</p>
 </div>
+<div id="concepts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#concepts" class="anchor"></a>Concepts</h2>
+<ul>
+<li>random factor / unit of analysis</li>
+<li>dependent variable / outcome measure</li>
+<li>independent variable / fixed factor</li>
+<li>categorical / discrete / ordinal</li>
+<li>continuous</li>
+<li>factor / variable / measure / column</li>
+<li>raw vs calculated variables</li>
+</ul>
+</div>
 <div id="how-a-specialist-can-help-an-analyst" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-a-specialist-can-help-an-analyst" class="anchor"></a>How a specialist can help an analyst</h2>
@@ -130,12 +146,15 @@
 <div id="what-are-the-research-questions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#what-are-the-research-questions" class="anchor"></a>What are the research questions?</h3>
-<p>This needs to be explained in terms of the observations you want to explain (e.g., the outcome measures, dependent variables), the factors you want to use to explain them (e.g., the independent variables, covariates), and any other attributes you might use to to exclude observations or divide your data.</p>
+<p>This needs to be explained in terms of the observations you want to predict (e.g., the outcome measures, dependent variables), the factors you want to use to predict them (e.g., the independent variables, covariates), and any other variables you might use to to exclude observations or divide your data.</p>
+<p>In your explanation for the analyst, highlight the <em>model</em> variables, giving them each a short label that will be used in the cleaned data. Some of these variables may be already present in the <em>raw</em> data, while others need to be <em>computed</em> or <em>extracted</em>. For example, some information might be in the column headers rather than as a variable, or summary scores may need to be computed.</p>
 </div>
 <div id="what-are-the-random-factors" class="section level3">
 <h3 class="hasAnchor">
 <a href="#what-are-the-random-factors" class="anchor"></a>What are the random factors?</h3>
-<p>Often, human subjects are one unit of analysis, or random factor, but you may also be sampling at other levels, such as from different drug trials, or subjects may be nested in different countries. Your random factors may be crossed, for example when a sample of subjects respond to a sample of face images, both subjects and faces are units of analysis.</p>
+<p>Often, human subjects are one unit of analysis, or random factor. You may have a nested design, where arms are nested inside studies for drug trials. Your random factors may be crossed, for example when a sample of subjects respond to a sample of face images, both subjects and faces are units of analysis.</p>
+<p>Tell the analyst how to uniquely identify each member of a random factor (e.g., a subject ID column, or each arm of a drug trial is identified by the unique combination of study DOI and treatment).</p>
+<p>Also give the analyst a rough idea of how many members there are of each random group. For example, “there should be about 500 subjects” or “there should be 35 studies with between 1 and 5 arms per study”. This helps the analyst identify anomalies quickly.</p>
 </div>
 <div id="what-belongs-to-which-random-factors" class="section level3">
 <h3 class="hasAnchor">
@@ -165,65 +184,65 @@
 <div id="checklist" class="section level3">
 <h3 class="hasAnchor">
 <a href="#checklist" class="anchor"></a>Checklist</h3>
+<div class="cb_list">
 <ul>
 <li>
-<input type="checkbox" disabled>
-Write down the research questions, putting each thing that will be considered in the models in bold.</li>
+<input type="checkbox"> Write down the research questions, putting each thing that will be considered in the models in bold.</li>
 <li>
-<input type="checkbox" disabled>
-List the random factors<ul>
+<input type="checkbox"> List the random factors
+<ul>
 <li>
-<input type="checkbox" disabled>
-Approximately how many should there be in the dataset?</li>
+<input type="checkbox"> Approximately how many should there be in the dataset?</li>
 <li>
-<input type="checkbox" disabled>
-If nested, what is the approximate range of number per group?</li>
+<input type="checkbox"> If nested, what is the approximate range of number per group?</li>
 <li>
-<input type="checkbox" disabled>
-Which column(s) in the data uniquely identify each member of each random factor?</li>
+<input type="checkbox"> Which column(s) in the data uniquely identify each member of each random factor?</li>
 <li>
-<input type="checkbox" disabled>
-Which columns in the data “belong” to each random factor?</li>
+<input type="checkbox"> Which columns in the data “belong” to each random factor?</li>
 </ul>
 </li>
 <li>
-<input type="checkbox" disabled>
-List the variables in the data relevant to your research question(s)<ul>
+<input type="checkbox"> List the variables in the data relevant to your research question(s)
+<ul>
 <li>
-<input type="checkbox" disabled>
-if categorical, what categories do you expect</li>
+<input type="checkbox"> if categorical, what categories do you expect</li>
 <li>
-<input type="checkbox" disabled>
-if continuous, what is the expected range</li>
+<input type="checkbox"> if continuous, what is the expected range</li>
 <li>
-<input type="checkbox" disabled>
-what values are impossible</li>
+<input type="checkbox"> what values are impossible</li>
 <li>
-<input type="checkbox" disabled>
-what values are suspicious</li>
+<input type="checkbox"> what values are suspicious</li>
 <li>
-<input type="checkbox" disabled>
-are there any variables that should definitely have a relationship (positive controls)</li>
+<input type="checkbox"> are there any variables that should definitely have a relationship (positive controls)</li>
 </ul>
 </li>
 <li>
-<input type="checkbox" disabled>
-Explain how the variables in the data need to be recoded</li>
+<input type="checkbox"> Explain how the variables in the data need to be recoded</li>
 </ul>
 </div>
-<div id="concepts" class="section level3">
-<h3 class="hasAnchor">
-<a href="#concepts" class="anchor"></a>Concepts</h3>
+</div>
+</div>
+<div id="how-an-analyst-can-help-a-specialist" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-an-analyst-can-help-a-specialist" class="anchor"></a>How an analyst can help a specialist</h2>
+<p>Writing asserts for the raw and cleaned data</p>
 <ul>
-<li>random factor / unit of analysis</li>
-<li>dependent variable / outcome measure</li>
-<li>independent variable / fixed factor</li>
-<li>categorical / discrete / ordinal</li>
-<li>continuous</li>
-<li>factor / variable / measure / column</li>
-<li>raw vs calculated variables</li>
+<li>how many members of each random factor are there? (count table)</li>
+<li>if random factors are nested, plot a histogram of the N per group</li>
+<li>for categorical factors:
+<ul>
+<li>what are all the values and their counts</li>
+<li>make a table of pre- and post-cleaning values (unique pre-values with counts if N is large, individual pre-values if N is smaller)</li>
 </ul>
-</div>
+</li>
+<li>for continuous factors:
+<ul>
+<li>histograms or density plots</li>
+<li>tables of impossible or suspicious values for further inspection</li>
+</ul>
+</li>
+</ul>
+<p>Make a template for an initial data cleaning report?</p>
 </div>
 <div class="footnotes">
 <hr>
